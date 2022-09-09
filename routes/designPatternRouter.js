@@ -4,7 +4,8 @@ import {
   getAllPatterns,
   getPatternById,
   deletePatternById,
-  updatePatternById
+  updatePatternById,
+  deleteMultiplePatterns
 } from "../controller/designPatternController.js";
 
 const router = express.Router();
@@ -18,5 +19,7 @@ router.get("/get/:id", getPatternById);
 router.delete("/delete/:id", deletePatternById);
 
 router.put("/update/:id", updatePatternById);
+
+router.delete("/deleteMulti", deleteMultiplePatterns);
 
 export default router;

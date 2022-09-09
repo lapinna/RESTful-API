@@ -60,3 +60,12 @@ export const updatePatternById = async (req, res) => {
     console.error(error);
   }
 };
+
+export const deleteMultiplePatterns = async (req, res) => {
+  try {
+    await designPatternModel.collection.deleteMany({author: req.body.author});
+    res.status(200).send(`Patterns were deleted`);
+  } catch (error) {
+    console.error(error);
+  }
+};
