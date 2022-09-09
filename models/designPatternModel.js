@@ -11,16 +11,20 @@ const patternShema = new mongoose.Schema(
       required: true,
     },
     reference: {
-      type: String
+      type: String,
     },
     author: {
-      type: String
+      type: String,
     },
     editor: {
-      type: String
+      type: String,
+    },
+    password: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("pattern", patternShema)
+export default mongoose.model("pattern", patternShema);
