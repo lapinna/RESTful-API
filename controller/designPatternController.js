@@ -34,6 +34,7 @@ export const updatePatternById = async (req, res) => {
       req.params.id,
       {
         $set: req.body,
+        isAdmin: req.pattern.isAdmin ? req.body.isAdmin : false,
       },
       { new: true }
     );
