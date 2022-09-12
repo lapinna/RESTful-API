@@ -1,6 +1,5 @@
 import express from "express";
 import {
-  createPattern,
   getAllPatterns,
   getPatternById,
   deletePatternById,
@@ -9,8 +8,6 @@ import {
 } from "../controller/designPatternController.js";
 
 const router = express.Router();
-
-router.post("/create", createPattern);
 
 router.get("/get", getAllPatterns);
 

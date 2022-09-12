@@ -1,7 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import designPatternRouter from "./routes/designPatternRouter.js";
+import designPatternRouter from "./routes/designPatternRoute.js";
+import authRouter from "./routes/authRoute.js";
 
 const app = express();
 const port = 3000;
@@ -20,6 +21,7 @@ const connectionToDB = async () => {
 };
 
 app.use("/api", designPatternRouter);
+app.use("/api", authRouter);
 
 app.listen(port, () => {
   connectionToDB();
