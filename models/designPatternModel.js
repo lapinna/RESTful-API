@@ -5,6 +5,7 @@ const patternShema = new mongoose.Schema(
     patternName: {
       type: String,
       required: true,
+      unique: true
     },
     description: {
       type: String,
