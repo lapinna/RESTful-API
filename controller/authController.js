@@ -36,9 +36,13 @@ export const loginPattern = async (req, res) => {
       return res.status(405).send("Wrong user or password!");
     }
 
-    const token = jwt.sign({ id: pattern._id }, process.env.JWT_SECRET, {
-      expiresIn: "1 day",
-    });
+    const token = jwt.sign(
+      { id: pattern._id, isAdmin: pattern.isAdmin },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1 day",
+      }
+    );
 
     return res
       .cookie("session_token", token, {
