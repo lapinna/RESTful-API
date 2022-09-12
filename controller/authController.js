@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import designPatternModel from "../models/designPatternModel.js";
+import jwt from "jsonwebtoken";
 
 export const createPattern = async (req, res) => {
   try {
@@ -35,7 +36,16 @@ export const loginPattern = async (req, res) => {
       return res.status(405).send("Wrong user or password!");
     }
 
-    return res.status(201).send("Successfully LOGGED in!");
+    const token = jwt.sign({ id: pattern._id }, process.env.JWT_SECRET, {
+      expiresIn: "1 day",
+    });
+
+    return res
+      .cookie("session_token", token, {
+        httpOnly: true,
+      })
+      .status(201)
+      .send("Successfully LOGGED in!");
   } catch (error) {
     console.error(error);
   }
