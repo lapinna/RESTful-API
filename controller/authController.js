@@ -9,6 +9,7 @@ export const createPattern = async (req, res) => {
     const newPattern = new designPatternModel({
       ...req.body,
       password: hash,
+      isAdmin: false,
     });
     await newPattern.save();
     res.status(201).send("New pattern is created!");
