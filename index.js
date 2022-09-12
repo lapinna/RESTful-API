@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import designPatternRouter from "./routes/designPatternRoute.js";
 import authRouter from "./routes/authRoute.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const port = 3000;
@@ -10,6 +11,7 @@ const port = 3000;
 dotenv.config();
 
 app.use(express.json());
+app.use(cookieParser());
 
 const connectionToDB = async () => {
   try {

@@ -1,4 +1,5 @@
 import express from "express";
+import {verifySessionToken} from "../authorized/authCheck.js"
 import {
   getAllPatterns,
   getPatternById,
@@ -11,11 +12,11 @@ const router = express.Router();
 
 router.get("/get", getAllPatterns);
 
-router.get("/get/:id", getPatternById);
+router.get("/get/:id", verifySessionToken, getPatternById);
 
-router.delete("/delete/:id", deletePatternById);
+router.delete("/delete/:id", verifySessionToken, deletePatternById);
 
-router.put("/update/:id", updatePatternById);
+router.put("/update/:id", verifySessionToken, updatePatternById);
 
 router.delete("/deleteMulti", deleteMultiplePatterns);
 
